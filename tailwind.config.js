@@ -1,7 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-      "./templates/index-teacher.html"
+      "./assets/styles/app.js",
+      "./templates/index-teacher.html.twig"
   ],
   theme: {
     extend: {},
