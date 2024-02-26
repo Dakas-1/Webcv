@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Teacher - Fallow</title>
     <!-- Fontawesome -->
-    <link href="assets/css/font-awesome-all.min.css" rel="stylesheet" />
+    <link href="{{ asset('../assets/css/font-awesome-all.min.css') }}" rel="stylesheet" />
     <!-- GLightbox -->
-    <link href="assets/css/glightbox.min.css" rel="stylesheet" />
+    <link href="{{ asset('../assets/css/glightbox.min.css') }}" rel="stylesheet" />
     <!-- Swiper -->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="{{ asset('../assets/css/swiper-bundle.min.css') }}" />
     <!-- Main -->
-    <link href="assets/css/output.css" rel="stylesheet" />
+    <link href="{{ asset('../assets/css/output.css') }}" rel="stylesheet" />
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
   </head>
   <body>
        <!-- Header -->
@@ -80,8 +87,8 @@
           <div class="mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <nav class="nav nav-teacher">
               <div class="nav__data">
-                <a href="index-teacher.html" class="nav__logo">
-                  <img src="assets/images/logo/logo-t-m.svg" alt="" />
+                <a href="./index-teacher.html.twig" class="nav__logo">
+                  <img src="../assets/images/logo/logo-t-m.svg" alt="" />
                 </a>
                 <div class="nav__toggle" id="nav-toggle">
                   <i class="fa-solid fa-bars nav__toggle-menu"></i>
@@ -263,7 +270,7 @@
       <section
         class="pt-36"
         style="
-          background: url('assets/images/bg/hero-2.jpg') no-repeat center
+          background: url('../assets/images/bg/hero-2.jpg') no-repeat center
             center/cover;
         "
       >
@@ -278,7 +285,7 @@
                 The Future <br />
                 Belongs to Those
                 <span class="relative" style="
-                background: url('assets/images/shape/line-t.svg') no-repeat bottom;
+                background: url('../assets/images/shape/line-t.svg') no-repeat bottom;
               "
                   >who Learn </span>
               </h1>
@@ -302,17 +309,17 @@
               </form>
               <div class="hidden xl:block">
                 <img
-                  src="assets/images/shape/o-arr.svg"
+                  src="../assets/images/shape/o-arr.svg"
                   class="absolute bottom-28 -left-36"
                   alt=""
                 />
               </div>
               <div class="flex items-center space-x-2">
                 <div class="flex -space-x-4 overflow-hidden">
-                  <img src="assets/images/avatar/axs-1.png" alt="" />
-                  <img src="assets/images/avatar/axs-2.png" alt="" />
-                  <img src="assets/images/avatar/axs-3.png" alt="" />
-                  <img src="assets/images/avatar/axs-4.png" alt="" />
+                  <img src="../assets/images/avatar/axs-1.png" alt="" />
+                  <img src="../assets/images/avatar/axs-2.png" alt="" />
+                  <img src="../assets/images/avatar/axs-3.png" alt="" />
+                  <img src="../assets/images/avatar/axs-4.png" alt="" />
                 </div>
                 <div>
                   <h4 class="font-medium text-xl text-white">
@@ -324,16 +331,16 @@
             </div>
             <div class="lg:w-1/2 order-1 lg:order-2">
               <div class="relative ">
-                <img src="assets/images/hero/hero-two/person.png" alt="" />
+                <img src="../assets/images/hero/hero-two/person.png" alt="" />
                 <ul class="hidden xl:block">
                   <li class="absolute -left-20 top-52">
-                    <img src="assets/images/hero/hero-two/sh-1.png" alt="" />
+                    <img src="../assets/images/hero/hero-two/sh-1.png" alt="" />
                   </li>
                   <li class="absolute -right-10 top-48">
-                    <img src="assets/images/hero/hero-two/sh-2.png" alt="" />
+                    <img src="../assets/images/hero/hero-two/sh-2.png" alt="" />
                   </li>
                   <li class="absolute bottom-20 -right-10">
-                    <img src="assets/images/hero/hero-two/sh-3.png" alt="" />
+                    <img src="../assets/images/hero/hero-two/sh-3.png" alt="" />
                   </li>
                 </ul>
               </div>
@@ -406,7 +413,7 @@
             </div>
             <div class="col-span-1">
               <div>
-                <img src="assets/images/about/person.png" class="mx-auto" alt="" />
+                <img src="../assets/images/about/person.png" class="mx-auto" alt="" />
               </div>
             </div>
             <div class="col-span-1">
@@ -664,7 +671,7 @@
               <div
                 class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-porange-700 bg-opacity-10 absolute -right-5 -top-5"
               >
-                <img src="assets/images/icons/ui.svg" alt="" />
+                <img src="../assets/images/icons/ui.svg" alt="" />
               </div>
               <h3 class="text-2xl font-bold mb-3 text-interface-100">
                 UI Design
@@ -711,7 +718,7 @@
               <div
                 class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-fpink-500 bg-opacity-10 absolute -right-5 -top-5"
               >
-                <img src="assets/images/icons/ux.svg" alt="" />
+                <img src="../assets/images/icons/ux.svg" alt="" />
               </div>
               <h3 class="text-2xl font-bold mb-3 text-interface-100">
                 UX Design
@@ -758,7 +765,7 @@
               <div
                 class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-seagreen-500 bg-opacity-10 absolute -right-5 -top-5"
               >
-                <img src="assets/images/icons/pd.svg" alt="" />
+                <img src="../assets/images/icons/pd.svg" alt="" />
               </div>
               <h3 class="text-2xl font-bold mb-3 text-interface-100">
                 Product Design
@@ -805,7 +812,7 @@
               <div
                 class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-orange-500 bg-opacity-10 absolute -right-5 -top-5"
               >
-                <img src="assets/images/icons/mk.svg" alt="" />
+                <img src="../assets/images/icons/mk.svg" alt="" />
               </div>
               <h3 class="text-2xl font-bold mb-3 text-interface-100">
                 Digital Marketing
@@ -852,7 +859,7 @@
               <div
                 class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-porange-700 bg-opacity-10 absolute -right-5 -top-5"
               >
-                <img src="assets/images/icons/cont.svg" alt="" />
+                <img src="../assets/images/icons/cont.svg" alt="" />
               </div>
               <h3 class="text-2xl font-bold mb-3 text-interface-100">
                 Content Writing
@@ -899,7 +906,7 @@
               <div
                 class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-sky-500 absolute -right-5 -top-5"
               >
-                <img src="assets/images/icons/search.svg" alt="" />
+                <img src="../assets/images/icons/search.svg" alt="" />
               </div>
               <h3 class="text-2xl font-bold mb-3 text-interface-100">
                 SEO Specialist
@@ -944,7 +951,7 @@
       <!-- Achivement Start-->
       <section class="pb-120">
         <div>
-          <img src="assets/images/bg/ach-bg.jpg" class="w-full" alt="" />
+          <img src="../assets/images/bg/ach-bg.jpg" class="w-full" alt="" />
         </div>
         <div class="mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div
@@ -953,7 +960,7 @@
             <!-- Left Col -->
             <div>
               <div class="absolute top-[50%] -left-24 z-0 hidden lg:block">
-                <img src="assets/images/bg/services-circle-t.png" alt="" />
+                <img src="../assets/images/bg/services-circle-t.png" alt="" />
               </div>
               <div class="relative z-10">
                 <h2
@@ -1231,7 +1238,7 @@
       <section
         class="lg:py-120 py-20"
         style="
-          background: url('assets/images/bg/expertise.jpg') no-repeat center
+          background: url('../assets/images/bg/expertise.jpg') no-repeat center
             center/cover;
         "
       >
@@ -1266,13 +1273,13 @@
           <!-- Shape -->
           <div class="hidden xl:block">
             <span class="absolute top-10 -left-24">
-              <img src="assets/images/shape/esh-1.svg" alt="" />
+              <img src="../assets/images/shape/esh-1.svg" alt="" />
             </span>
             <span class="absolute xl:-left-16 -bottom-12 z-0">
-              <img src="assets/images/shape/esh-2.svg" alt="" />
+              <img src="../assets/images/shape/esh-2.svg" alt="" />
             </span>
             <span class="absolute right-0 xl:-right-16 -bottom-16">
-              <img src="assets/images/shape/esh-3.svg" alt="" />
+              <img src="../assets/images/shape/esh-3.svg" alt="" />
             </span>
           </div>
           <div class="grid lg:grid-cols-12 gap-10 relative z-10">
@@ -1280,7 +1287,7 @@
               <div
                 class="flex items-center justify-center rounded-lg h-[528px]"
                 style="
-                  background: url('assets/images/gallery/thumb-lg.jpg')
+                  background: url('../assets/images/gallery/thumb-lg.jpg')
                     no-repeat center / cover;
                 "
               >
@@ -1309,7 +1316,7 @@
                 <div
                   class="h-[160px] shrink-0 w-full rounded flex items-center justify-center"
                   style="
-                    background: url('assets/images/gallery/thumb-sm-1.jpg')
+                    background: url('../assets/images/gallery/thumb-sm-1.jpg')
                       no-repeat center/cover;
                   "
                 >
@@ -1334,7 +1341,7 @@
                 <div
                   class="h-[160px] shrink-0 w-full rounded flex items-center justify-center"
                   style="
-                    background: url('assets/images/gallery/thumb-sm-2.jpg')
+                    background: url('../assets/images/gallery/thumb-sm-2.jpg')
                       no-repeat center/cover;
                   "
                 >
@@ -1359,7 +1366,7 @@
                 <div
                   class="h-[160px] shrink-0 w-full rounded flex items-center justify-center"
                   style="
-                    background: url('assets/images/gallery/thumb-sm-3.jpg')
+                    background: url('../assets/images/gallery/thumb-sm-3.jpg')
                       no-repeat center/cover;
                   "
                 >
@@ -1392,7 +1399,7 @@
       <section
         class="lg:py-120 py-20"
         style="
-          background: url('assets/images/bg/dotted-bg.jpg') no-repeat center
+          background: url('../assets/images/bg/dotted-bg.jpg') no-repeat center
             center/cover;
         "
       >
@@ -1407,7 +1414,7 @@
                 more
                 <mark
                   style="
-                    background: url('assets/images/shape/mark-line.svg')
+                    background: url('../assets/images/shape/mark-line.svg')
                       no-repeat bottom;
                   "
                   >than 500k
@@ -1418,31 +1425,31 @@
             <div class="lg:col-span-3 w-full">
               <div class="grid grid-cols-2 md:grid-cols-3 gap-y-10">
                 <div>
-                  <img src="assets/images/clients/cl-1.svg" alt="" />
+                  <img src="../assets/images/clients/cl-1.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-2.svg" alt="" />
+                  <img src="../assets/images/clients/cl-2.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-3.svg" alt="" />
+                  <img src="../assets/images/clients/cl-3.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-4.svg" alt="" />
+                  <img src="../assets/images/clients/cl-4.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-5.svg" alt="" />
+                  <img src="../assets/images/clients/cl-5.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-6.svg" alt="" />
+                  <img src="../assets/images/clients/cl-6.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-7.svg" alt="" />
+                  <img src="../assets/images/clients/cl-7.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-8.svg" alt="" />
+                  <img src="../assets/images/clients/cl-8.svg" alt="" />
                 </div>
                 <div>
-                  <img src="assets/images/clients/cl-9.svg" alt="" />
+                  <img src="../assets/images/clients/cl-9.svg" alt="" />
                 </div>
               </div>
             </div>
@@ -1653,7 +1660,7 @@
               <div
                 class="px-8 py-10 bg-[#F0F4FC] rounded-lg"
                 style="
-                  background: url('assets/images/bg/contact-form-bg-shape.jpg')
+                  background: url('../assets/images/bg/contact-form-bg-shape.jpg')
                     no-repeat center center/cover;
                 "
               >
@@ -1740,7 +1747,7 @@
       <section
         class="py-120 bg-[#F7F7FD]"
         style="
-          background: url('assets/images/bg/blog-t-bg.jpg') no-repeat center
+          background: url('../assets/images/bg/blog-t-bg.jpg') no-repeat center
             center/cover;
         "
       >
@@ -1777,7 +1784,7 @@
                 <div class="bg-white shadow-custom rounded p-5">
                   <a href="blog-details.html" class="block mb-6 rounded">
                     <img
-                      src="assets/images/blogs/th-7.jpg"
+                      src="../assets/images/blogs/th-7.jpg"
                       class="w-full"
                       alt="Human"
                     />
@@ -1811,7 +1818,7 @@
                 <div class="bg-white shadow-custom rounded p-5">
                   <a href="blog-details.html" class="block mb-6 rounded">
                     <img
-                      src="assets/images/blogs/th-8.jpg"
+                      src="../assets/images/blogs/th-8.jpg"
                       class="w-full"
                       alt="Human"
                     />
@@ -1845,7 +1852,7 @@
                 <div class="bg-white shadow-custom rounded p-5">
                   <a href="blog-details.html" class="block mb-6 rounded">
                     <img
-                      src="assets/images/blogs/th-9.jpg"
+                      src="../assets/images/blogs/th-9.jpg"
                       class="w-full"
                       alt="Human"
                     />
@@ -1879,7 +1886,7 @@
                 <div class="bg-white shadow-custom rounded p-5">
                   <a href="blog-details.html" class="block mb-6 rounded">
                     <img
-                      src="assets/images/blogs/th-7.jpg"
+                      src="../assets/images/blogs/th-7.jpg"
                       class="w-full"
                       alt="Human"
                     />
@@ -2079,7 +2086,7 @@
     <footer
       class="lg:py-120 py-20 border-y border-[#1C2134]"
       style="
-        background: url('assets/images/bg/footer-dark-bg.jpg') no-repeat center
+        background: url('../assets/images/bg/footer-dark-bg.jpg') no-repeat center
           center/cover;
       "
     >
@@ -2089,7 +2096,7 @@
         >
           <div class="md:col-span-6 lg:col-span-3">
             <a href="index.html" class="block mb-7">
-              <img src="assets/images/logo/logo-ph-bottom.svg" alt="" />
+              <img src="../assets/images/logo/logo-ph-bottom.svg" alt="" />
             </a>
             <p class="text-white text-base">
               We work with a passion of taking challenges and creating new ones
@@ -2275,30 +2282,30 @@
     </section>
 
     <!-- Jquery JS -->
-    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/jquery-3.6.0.min.js"></script>
 
     <!-- Migrate -->
-    <script src="assets/js/jquery-migrate.min.js"></script>
+    <script src="../assets/js/jquery-migrate.min.js"></script>
 
     <!-- CounterUp -->
-    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
 
     <!-- CounterUp -->
-    <script src="assets/js/waypoints.min.js"></script>
+    <script src="../assets/js/waypoints.min.js"></script>
 
     <!-- Isotope -->
-    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
 
     <!-- Imagesloaded -->
-    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
 
     <!-- Lightbox -->
-    <script src="assets/js/glightbox.min.js"></script>
+    <script src="../assets/js/glightbox.min.js"></script>
 
     <!-- Swiper -->
-    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
 
     <!-- JS Files -->
-    <script src="assets/js/app.js"></script>
+    <script src="../assets/js/app.js"></script>
   </body>
 </html>
