@@ -23,6 +23,8 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "ev-emitter": "^2.1.2",
+        "jquery": "^3.7.1",
         "webpack-encore-bundle": "symfony/webpack-encore-bundle"
     }
 }
