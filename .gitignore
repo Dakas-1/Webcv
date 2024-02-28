@@ -8,6 +8,7 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+/.idea
 /node_modules/
 /public/build/
 npm-debug.log
