@@ -4824,6 +4824,10 @@ webpack-dev-server@^4.8.0:
     webpack-dev-middleware "^5.3.1"
     ws "^8.13.0"
 
+webpack-encore-bundle@symfony/webpack-encore-bundle:
+  version "0.0.0"
+  resolved "https://codeload.github.com/symfony/webpack-encore-bundle/tar.gz/3b5ed468e5235f7a508b46033653a7bccd740913"
+
 webpack-merge@^5.7.3:
   version "5.10.0"
   resolved "https://registry.npmjs.org/webpack-merge/-/webpack-merge-5.10.0.tgz"
