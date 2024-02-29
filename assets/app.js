@@ -7,13 +7,4 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-import './js/app';
-import './js/jquery-migrate.min';
-import './js/jquery-3.6.0.min';
-import './js/glightbox.min';
-import './js/imagesloaded.pkgd.min';
-import './js/isotope.pkgd.min';
-import './js/jquery.counterup.min';
-import './js/swiper-bundle.min';
-import './js/waypoints.min';
 import './css/swiper-bundle.min';
