@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\TwigExtensions;
 
 use Twig\Extension\AbstractExtension;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;

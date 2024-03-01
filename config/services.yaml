@@ -7,14 +7,11 @@ parameters:
     uploaded_images_dir: '%kernel.project_dir%/public/uploads/images/'
 
 services:
-    App\ImageExtension:
+    App\TwigExtensions\ImageExtension:
         autowire: true
         public: false
         arguments:
             $absolutePath: '%uploaded_images_dir%'
-    App\Controller\HomepageController:
-        autowire: false
-        public: true
 
     App\:
         resource: '../src/'
