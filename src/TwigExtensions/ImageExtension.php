@@ -17,7 +17,7 @@ class ImageExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('image_exist', [$this, 'imageExists']),
+            new TwigFunction('image_exists', [$this, 'imageExists']),
         ];
     }
     public function imageExists(string $imageName): bool
