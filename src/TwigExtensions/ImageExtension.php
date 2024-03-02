@@ -11,7 +11,9 @@ class ImageExtension extends AbstractExtension
 {
 
     public function __construct(#[Autowire('%kernel.debug%')]
-                                private $absolutePath
+                                private $absolutePath,
+                                private FileSystem
+                                $filesystem
     )
     {}
     public function getFunctions(): array
@@ -22,7 +24,6 @@ class ImageExtension extends AbstractExtension
     }
     public function imageExists(string $imageName): bool
     {
-        $filesystem = new Filesystem();
-        return $filesystem->exists($this->absolutePath . $imageName);
+        return $this->filesystem->exists($this->absolutePath . $imageName);
     }
 }
