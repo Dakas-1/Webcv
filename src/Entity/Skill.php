@@ -11,13 +11,13 @@ class Skill
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: "string", length: 255, nullable: false)]
-    private $slug;
+    private string $slug;
 
     #[ORM\Column(type: "string", length: 255, nullable: false)]
-    private $name;
+    private string $name;
 
     public function getId(): ?int
     {

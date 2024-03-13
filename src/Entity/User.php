@@ -12,19 +12,19 @@ class User implements UserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private $id;
+    private int $id;
 
     #[ORM\Column(type: "string", length: 255, nullable: false)]
-    private $username;
+    private string $username;
 
     #[ORM\Column(type: "string", length: 255, nullable: false)]
-    private $email;
+    private string $email;
 
     #[ORM\Column(type: "string", length: 255, nullable: false)]
-    private $password;
+    private string $password;
 
-    #[ORM\Column(type: "array", nullable: false)]
-    private $roles = [];
+    #[ORM\Column(type: "json", nullable: false)]
+    private array $roles = [];
 
     public function getId(): ?int
     {
