@@ -13,10 +13,10 @@ class Skill
     #[ORM\Column(type: "integer")]
     private int $id;
 
-    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[ORM\Column(type: "string", length: 255)]
     private string $slug;
 
-    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[ORM\Column(type: "string", length: 255)]
     private string $name;
 
     public function getId(): ?int

@@ -14,16 +14,16 @@ class User implements UserInterface
     #[ORM\Column(type: "integer")]
     private int $id;
 
-    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[ORM\Column(type: "string", length: 255)]
     private string $username;
 
-    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[ORM\Column(type: "string", length: 255)]
     private string $email;
 
-    #[ORM\Column(type: "string", length: 255, nullable: false)]
+    #[ORM\Column(type: "string", length: 255)]
     private string $password;
 
-    #[ORM\Column(type: "json", nullable: false)]
+    #[ORM\Column(type: "json")]
     private array $roles = [];
 
     public function getId(): ?int
