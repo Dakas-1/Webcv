@@ -47,19 +47,17 @@ class CreateAdminCommand extends Command
 
         $hashedPassword = $this->passwordHasher->hashPassword(null, $password);
 
+        $roles = ['USER', 'ADMIN'];
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
         $user->setPassword($hashedPassword);
-        $user->setRoles(['ROLE_ADMIN']);
+        $user->setRoles($roles);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        $output->writeln('Admin user created successfully:');
-        $output->writeln('Username: ' . $username);
-        $output->writeln('Email: ' . $email);
-        $output->writeln('Password: ' . $password);
+        $output->writeln('Success created admin user with username "'.$username.'" and password "'.$password.'"!' );
 
         return Command::SUCCESS;
     }
