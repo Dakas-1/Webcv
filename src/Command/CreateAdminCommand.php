@@ -12,7 +12,6 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-
 class CreateAdminCommand extends Command
 {
     protected static $defaultName = 'make:admin';
@@ -44,13 +43,26 @@ class CreateAdminCommand extends Command
         $email = $helper->ask($input, $output, new Question('Please enter the email: '));
         $password = $helper->ask($input, $output, new Question('Please enter the password: '));
 
+        if (empty($username)) {
+            $output->writeln('<error>Username cannot be empty!</error>');
+            return Command::FAILURE;
+        }
 
-        $hashedPassword = $this->passwordHasher->hashPassword(null, $password);
+        if (empty($email)) {
+            $output->writeln('<error>Email cannot be empty!</error>');
+            return Command::FAILURE;
+        }
+
+        if (empty($password)) {
+            $output->writeln('<error>Password cannot be empty!</error>');
+            return Command::FAILURE;
+        }
 
         $roles = ['USER', 'ADMIN'];
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
+        $hashedPassword = $this->passwordHasher->hashPassword(null, $password);
         $user->setPassword($hashedPassword);
         $user->setRoles($roles);
 
