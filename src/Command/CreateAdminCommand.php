@@ -58,11 +58,12 @@ class CreateAdminCommand extends Command
             return Command::FAILURE;
         }
 
+        $hashedPassword = $this->passwordHasher->hashPassword($username, $password);
+
         $roles = ['USER', 'ADMIN'];
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
-        $hashedPassword = $this->passwordHasher->hashPassword(null, $password);
         $user->setPassword($hashedPassword);
         $user->setRoles($roles);
 
