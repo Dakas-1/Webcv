@@ -11,6 +11,7 @@ use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CreateAdminCommand extends Command
 {
@@ -18,10 +19,14 @@ class CreateAdminCommand extends Command
 
     private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager)
+    public function __construct(UserPasswordHasherInterface $passwordHasher,
+                                EntityManagerInterface      $entityManager,
+                                ValidatorInterface          $validator
+    )
     {
         $this->passwordHasher = $passwordHasher;
         $this->entityManager = $entityManager;
+        $this->validator = $validator;
 
         parent::__construct();
     }
@@ -66,10 +71,18 @@ class CreateAdminCommand extends Command
         $user->setPassword($hashedPassword);
         $user->setRoles($roles);
 
+        $errors = $this->validator->validate($user);
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                $output->writeln('<error>' . $error->getMessage() . '</error>');
+            }
+            return Command::FAILURE;
+        }
+
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        $output->writeln('Success created admin user with username "'.$username.'" and password "'.$password.'"!' );
+        $output->writeln('Success created admin user with username "' . $username . '" and password "' . $password . '"!');
 
         return Command::SUCCESS;
     }
