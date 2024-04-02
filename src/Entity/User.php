@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\PasswordStrength;
 
 #[ORM\Entity]
 #[ORM\Table(name: "users")]
@@ -29,9 +30,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: "string", length: 255)]
     #[Assert\NotBlank]
-    #[Assert\PasswordStrength([
-        'minScore' => PasswordStrength::STRENGTH_MEDIUM, 'message' => 'Your password is too easy to guess.'
-    ])]
+    #[Assert\Length(
+        min: 8,
+        minMessage: 'Your first name must be at least {{ limit }} characters long',
+    )]
+    #[Assert\PasswordStrength(
+        minScore: PasswordStrength::STRENGTH_MEDIUM,
+        message: "Your password is too easy to guess."
+    )]
     private string $password;
 
     #[ORM\Column(type: "json")]
