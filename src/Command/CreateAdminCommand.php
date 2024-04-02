@@ -12,21 +12,25 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use App\Repository\UserRepository;
 
 class CreateAdminCommand extends Command
 {
     protected static $defaultName = 'make:admin';
 
     private UserPasswordHasherInterface $passwordHasher;
+    private UserRepository $userRepository;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher,
                                 EntityManagerInterface      $entityManager,
-                                ValidatorInterface          $validator
+                                ValidatorInterface          $validator,
+                                UserRepository              $userRepository
     )
     {
         $this->passwordHasher = $passwordHasher;
         $this->entityManager = $entityManager;
         $this->validator = $validator;
+        $this->userRepository = $userRepository;
 
         parent::__construct();
     }
@@ -57,7 +61,10 @@ class CreateAdminCommand extends Command
             $output->writeln('<error>Email cannot be empty!</error>');
             return Command::FAILURE;
         }
-
+        if ($this->userRepository->findByEmail($email)) {
+            $output->writeln('<error>User with this email already exists!</error>');
+            return Command::FAILURE;
+        }
         if (empty($password)) {
             $output->writeln('<error>Password cannot be empty!</error>');
             return Command::FAILURE;
