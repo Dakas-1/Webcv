@@ -19,6 +19,7 @@
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.4.*",
         "symfony/runtime": "6.4.*",
+        "symfony/security-bundle": "6.4.*",
         "symfony/security-core": "6.4.*",
         "symfony/twig-bundle": "6.4.*",
         "symfony/webpack-encore-bundle": "^2.1",
@@ -75,6 +76,7 @@
         }
     },
     "require-dev": {
+        "symfony/maker-bundle": "^1.59",
         "symfony/stopwatch": "6.4.*",
         "symfony/web-profiler-bundle": "6.4.*"
     }
