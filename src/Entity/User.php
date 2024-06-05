@@ -90,6 +90,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function eraseCredentials()
     {
-        $this->password = null;
+        // Do not set password to null, just leave this method empty
     }
 }
