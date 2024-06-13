@@ -3,14 +3,12 @@
 namespace App\Command;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class CreateAdminCommand extends Command
@@ -18,7 +16,8 @@ class CreateAdminCommand extends Command
     protected static $defaultName = 'make:admin';
 
     private UserPasswordHasherInterface $passwordHasher;
-    private UserRepository $userRepository;
+    private EntityManagerInterface $entityManager;
+    private ValidatorInterface $validator;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher,
                                 EntityManagerInterface      $entityManager,
@@ -32,14 +31,14 @@ class CreateAdminCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setDescription('Create a new admin user')
             ->setHelp('This command allows you to create a new admin user');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Welcome to the admin user creation wizard.');
 
@@ -51,25 +50,29 @@ class CreateAdminCommand extends Command
 
         if (empty($username)) {
             $output->writeln('<error>Username cannot be empty!</error>');
+
             return Command::FAILURE;
         }
 
         if (empty($email)) {
             $output->writeln('<error>Email cannot be empty!</error>');
+
             return Command::FAILURE;
         }
         $userRepository = $this->entityManager->getRepository(User::class);
         $user = $userRepository->findOneBy(['email' => $email]);
         if ($user instanceof User) {
             $output->writeln('<error>User with this email already exists!</error>');
+
             return Command::FAILURE;
         }
         if (empty($password)) {
             $output->writeln('<error>Password cannot be empty!</error>');
+
             return Command::FAILURE;
         }
 
-        $roles = ['USER', 'ADMIN'];
+        $roles = ['ROLE_USER', 'ROLE_ADMIN'];
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
@@ -82,6 +85,7 @@ class CreateAdminCommand extends Command
             foreach ($errors as $error) {
                 $output->writeln('<error>' . $error->getMessage() . '</error>');
             }
+
             return Command::FAILURE;
         }
 
