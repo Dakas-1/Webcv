@@ -4,35 +4,31 @@ namespace App\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\String\Slugger\SluggerInterface;
+use App\Service\SluggerService;
 use App\Entity\Skill;
 
 class SkillCrudController extends AbstractCrudController
 {
-    private SluggerInterface $slugger;
+    private SluggerService $sluggerService;
 
-    public function __construct(SluggerInterface $slugger)
+    public function __construct(SluggerService $sluggerService)
     {
-        $this->slugger = $slugger;
+        $this->sluggerService = $sluggerService;
     }
 
     public static function getEntityFqcn(): string
     {
         return Skill::class;
     }
-    public function createEntity(string $entityFqcn)
-    {
-        $skill = new Skill();
-        $skill->setSlugger($this->slugger);
-        return $skill;
-    }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        if (!$entityInstance instanceof Skill) return;
-        $slug = $this->slugger->slug($entityInstance->getName())->lower();
-        $entityInstance->setSlug($slug);
+        if (!$entityInstance instanceof Skill){
 
+            return;
+        }
+        $slug = $this->sluggerService->generateSlug($entityInstance->getName());
+        $entityInstance->setSlug($slug);
         $entityManager->persist($entityInstance);
         $entityManager->flush();
     }
