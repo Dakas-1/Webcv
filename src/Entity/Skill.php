@@ -21,10 +21,6 @@ class Skill
 
     private ?SluggerInterface $slugger = null;
 
-    public function __construct()
-    {
-        // Initialize properties if needed
-    }
 
     public function getId(): ?int
     {
@@ -51,17 +47,5 @@ class Skill
     {
         $this->name = $name;
         return $this;
-    }
-
-    public function setSlugger(SluggerInterface $slugger): void
-    {
-        $this->slugger = $slugger;
-    }
-
-    public function generateSlug(): void
-    {
-        if ($this->slugger !== null && $this->name !== null) {
-            $this->slug = $this->slugger->slug($this->name)->lower();
-        }
     }
 }
