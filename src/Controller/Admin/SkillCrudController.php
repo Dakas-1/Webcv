@@ -20,6 +20,12 @@ class SkillCrudController extends AbstractCrudController
     {
         return Skill::class;
     }
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            'name',
+        ];
+    }
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
