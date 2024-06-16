@@ -30,7 +30,6 @@ class SkillCrudController extends AbstractCrudController
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
         if (!$entityInstance instanceof Skill){
-
             return;
         }
         $slug = $this->sluggerService->generateSlug($entityInstance->getName());
