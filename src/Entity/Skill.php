@@ -2,7 +2,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[ORM\Entity]
 #[ORM\Table(name: "skills")]
@@ -19,9 +18,6 @@ class Skill
     #[ORM\Column(type: "string", length: 255)]
     private string $name;
 
-    private ?SluggerInterface $slugger = null;
-
-
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +31,7 @@ class Skill
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
         return $this;
     }
 
@@ -46,6 +43,7 @@ class Skill
     public function setName(string $name): self
     {
         $this->name = $name;
+
         return $this;
     }
 }
