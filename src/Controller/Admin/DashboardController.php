@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Entity\Skill;
+use App\Constants\UserRole;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -20,7 +21,7 @@ class DashboardController extends AbstractDashboardController
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
     #[Route('/admin', name: 'admin')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted(UserRole::ADMIN)]
     public function index(): Response
     {
         $url = $this->adminUrlGenerator->setController(SkillCrudController::class)->generateUrl();

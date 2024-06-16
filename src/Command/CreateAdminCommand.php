@@ -10,7 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-
+use App\Constants\UserRole;
 class CreateAdminCommand extends Command
 {
     protected static $defaultName = 'make:admin';
@@ -72,7 +72,7 @@ class CreateAdminCommand extends Command
             return Command::FAILURE;
         }
 
-        $roles = ['ROLE_USER', 'ROLE_ADMIN'];
+        $roles = [UserRole::USER, UserRole::ADMIN];
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($email);
