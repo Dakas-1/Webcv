@@ -4,16 +4,16 @@ namespace App\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Service\SluggerService;
 use App\Entity\Skill;
-
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use App\Event\SkillEvent;
 class SkillCrudController extends AbstractCrudController
 {
-    private SluggerService $sluggerService;
+    private EventDispatcherInterface $eventDispatcher;
 
-    public function __construct(SluggerService $sluggerService)
+    public function __construct(EventDispatcherInterface $eventDispatcher)
     {
-        $this->sluggerService = $sluggerService;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public static function getEntityFqcn(): string
@@ -29,12 +29,12 @@ class SkillCrudController extends AbstractCrudController
 
     public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
     {
-        if (!$entityInstance instanceof Skill){
-            return;
+        if ($entityInstance instanceof Skill) {
+            $event = new SkillEvent($entityInstance);
+            $this->eventDispatcher->dispatch($event, SkillEvent::NAME);
+
+            $entityManager->persist($entityInstance);
+            $entityManager->flush();
         }
-        $slug = $this->sluggerService->generateSlug($entityInstance->getName());
-        $entityInstance->setSlug($slug);
-        $entityManager->persist($entityInstance);
-        $entityManager->flush();
     }
 }
