@@ -1,0 +1,17 @@
+easy_admin:
+  entities:
+    - name: 'Skill'
+      class: 'App\Entity\Skill'
+      label: 'Skills'
+      list:
+        title: 'List of Skills'
+        fields:
+          - { property: 'id', label: 'ID' }
+          - { property: 'slug', label: 'Slug' }
+          - { property: 'name', label: 'Name' }
+      form:
+        title: 'Edit Skill'
+        fields:
+          - { property: 'name', label: 'Name' }
+          - { property: 'description', label: 'Description' }
+          - { property: 'slug', label: 'Slug' }

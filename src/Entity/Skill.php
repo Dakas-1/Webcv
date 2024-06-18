@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -9,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Skill
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\GeneratedValue]
     #[ORM\Column(type: "integer")]
     private int $id;
 
@@ -29,9 +28,11 @@ class Skill
         return $this->slug;
     }
 
-    public function setSlug(string $slug): void
+    public function setSlug(string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -39,8 +40,10 @@ class Skill
         return $this->name;
     }
 
-    public function setName(string $name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
     }
 }
