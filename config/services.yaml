@@ -29,6 +29,6 @@ services:
       $absolutePath: '%uploaded_images_dir%'
     public: false
 
-  App\EventSubscriber\SkillSubscriber:
-    tags:
-      - { name: 'kernel.event_subscriber' }
+  App\Service\SluggerService:
+    arguments:
+      $slugger: '@slugger'
