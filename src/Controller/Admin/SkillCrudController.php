@@ -38,4 +38,14 @@ class SkillCrudController extends AbstractCrudController
             $entityManager->flush();
         }
     }
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if ($entityInstance instanceof Skill) {
+            $event = new SkillEvent($entityInstance);
+            $this->eventDispatcher->dispatch($event, SkillEvent::NAME);
+
+            $entityManager->persist($entityInstance);
+            $entityManager->flush();
+        }
+    }
 }
