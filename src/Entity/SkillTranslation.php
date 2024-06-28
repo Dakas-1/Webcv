@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
 
 #[ORM\Entity]
-#[ORM\Table(name: "skill_tanslations")]
+#[ORM\Table(name: "skill_translations")]
 class SkillTranslation
 {
     #[ORM\Id]
