@@ -19,9 +19,9 @@ class Skill
     private string $slug;
 
     #[ORM\OneToMany(targetEntity: SkillTranslation::class, mappedBy: 'skill')]
-    private Collection $skillTranslation;
+    private Collection $skillTranslations;
     public function __construct(){
-        $this->skillTranslation = new ArrayCollection();
+        $this->skillTranslations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -43,8 +43,8 @@ class Skill
 
     public function addTranslation(SkillTranslation $skillTranslation): self
     {
-        if (!$this->skillTranslation->contains($skillTranslation)) {
-            $this->skillTranslation[] = $skillTranslation;
+        if (!$this->skillTranslations->contains($skillTranslation)) {
+            $this->skillTranslations[] = $skillTranslation;
             $skillTranslation->setSkill($this);
         }
 
@@ -53,7 +53,7 @@ class Skill
 
     public function removeTranslation(SkillTranslation $skillTranslation): self
     {
-        $this->skillTranslation->removeElement($skillTranslation);
+        $this->skillTranslations->removeElement($skillTranslation);
 
         return $this;
     }

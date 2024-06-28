@@ -20,7 +20,7 @@ class SkillTranslation
     #[ORM\Column(type: "string", length: 255)]
     private string $locale;
 
-    #[ManyToOne(targetEntity: Skill::class, inversedBy: 'skillTranslation')]
+    #[ManyToOne(targetEntity: Skill::class, inversedBy: 'skillTranslations')]
     #[ORM\JoinColumn(nullable: false)]
     private Skill $skill;
 
@@ -58,9 +58,9 @@ class SkillTranslation
         return $this->skill;
     }
 
-    public function setSkill(Skill $skillS): self
+    public function setSkill(Skill $skill): self
     {
-        $this->skill = $skillS;
+        $this->skill = $skill;
 
         return $this;
     }
