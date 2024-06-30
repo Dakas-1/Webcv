@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -15,8 +18,11 @@ class Skill
     #[ORM\Column(type: "string", length: 255)]
     private string $slug;
 
-    #[ORM\Column(type: "string", length: 255)]
-    private string $name;
+    #[ORM\OneToMany(targetEntity: SkillTranslation::class, mappedBy: 'skill')]
+    private Collection $skillTranslations;
+    public function __construct(){
+        $this->skillTranslations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -35,14 +41,19 @@ class Skill
         return $this;
     }
 
-    public function getName(): ?string
+    public function addTranslation(SkillTranslation $skillTranslation): self
     {
-        return $this->name;
+        if (!$this->skillTranslations->contains($skillTranslation)) {
+            $this->skillTranslations[] = $skillTranslation;
+            $skillTranslation->setSkill($this);
+        }
+
+        return $this;
     }
 
-    public function setName(string $name): self
+    public function removeTranslation(SkillTranslation $skillTranslation): self
     {
-        $this->name = $name;
+        $this->skillTranslations->removeElement($skillTranslation);
 
         return $this;
     }
