@@ -26,7 +26,7 @@ class Skill implements TranslatableInterface
     {
         return PropertyAccess::createPropertyAccessor()->getValue($this->translate(), $name);
     }
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
