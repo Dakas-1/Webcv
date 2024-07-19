@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Entity\Skill;
+use App\Entity\Article;
 use App\Constants\UserRole;
 
 class DashboardController extends AbstractDashboardController
@@ -40,6 +41,7 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linktoDashboard('Dashboard', 'fa fa-home'),
             MenuItem::linkToCrud('Skills', 'fa fa-tags', Skill::class),
+            MenuItem::linkToCrud('Article', 'fa fa-tags', Article::class),
         ];
     }
 }
