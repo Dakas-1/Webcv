@@ -10,7 +10,7 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 
 #[ORM\Entity]
 #[ORM\Table(name: "skills")]
-#[ORM\UniqueConstraint(name: "locale_slug_uidx", columns: ['slug'])]
+#[ORM\UniqueConstraint(name: "skill_slug_uidx", columns: ['slug'])]
 #[UniqueEntity(['slug'])]
 class Skill implements TranslatableInterface
 {
