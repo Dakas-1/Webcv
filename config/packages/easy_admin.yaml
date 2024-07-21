@@ -1,6 +1,10 @@
 easy_admin:
+  design:
+    form_theme:
+      - '@EasyAdmin/form/bootstrap_4.html.twig'
+
   entities:
-    - name: 'Skill'
+    Skill:
       class: 'App\Entity\Skill'
       label: 'Skills'
       list:
@@ -15,3 +19,11 @@ easy_admin:
           - { property: 'name', label: 'Name' }
           - { property: 'description', label: 'Description' }
           - { property: 'slug', label: 'Slug' }
+
+    Article:
+      class: 'App\Entity\Article'
+      label: 'Articles'
+      form:
+        fields:
+          - { property: 'title', label: 'Title' }
+          - { property: 'text', label: 'Text'}

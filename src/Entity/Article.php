@@ -3,18 +3,19 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
+use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 #[ORM\Entity]
-#[ORM\Table(name: "skills")]
-class Skill implements TranslatableInterface
+#[ORM\Table(name: "articles")]
+class Article implements TranslatableInterface
 {
     use TranslatableTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: "integer")]
+    #[ORM\Column]
     private int $id;
     #[ORM\Column(type: "string", length: 255, unique: true)]
     private string $slug;
@@ -23,6 +24,7 @@ class Skill implements TranslatableInterface
     {
         return PropertyAccess::createPropertyAccessor()->getValue($this->translate(), $name);
     }
+
     public function getId(): int
     {
         return $this->id;
@@ -39,5 +41,4 @@ class Skill implements TranslatableInterface
 
         return $this;
     }
-
 }
