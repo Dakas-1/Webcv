@@ -5,12 +5,10 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
 use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 #[ORM\Entity]
 #[ORM\Table(name: "skills")]
-#[UniqueEntity(['slug'])]
 class Skill implements TranslatableInterface
 {
     use TranslatableTrait;
