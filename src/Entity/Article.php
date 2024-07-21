@@ -10,7 +10,6 @@ use Symfony\Component\PropertyAccess\PropertyAccess;
 
 #[ORM\Entity]
 #[ORM\Table(name: "articles")]
-#[ORM\UniqueConstraint(name: "article_slug_uidx", columns: ['slug'])]
 #[UniqueEntity(['slug'])]
 class Article implements TranslatableInterface
 {
@@ -20,7 +19,7 @@ class Article implements TranslatableInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private int $id;
-    #[ORM\Column(type: "string", length: 255,)]
+    #[ORM\Column(type: "string", length: 255, unique: true)]
     private string $slug;
 
     public function __get($name)
