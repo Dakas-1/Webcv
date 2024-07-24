@@ -4,6 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Home Dev - Fallow</title>
+
     <!-- Fontawesome -->
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
@@ -12,8 +13,11 @@
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
+
+
 </head>
 <body>
+
 <!-- Header -->
 <header class="main-header">
     <!-- Header Top -->
@@ -21,6 +25,16 @@
         <div class="flex justify-between py-3">
             <div class="grow">
                 <div class="flex space-x-0 md:space-x-14">
+                    <!-- Locale -->
+                    {% if app.request.getLocale == 'en' %}
+                        <a href="{{ fullUrl }}"
+                           class="text-white text-base"
+                        ><p>русский</p></a>
+                    {% elseif app.request.getLocale == 'ru' %}
+                        <a href="{{ fullUrl }}"
+                           class="text-white text-base"
+                        ><p>english</p></a>
+                    {% endif %}
                     <!-- Email -->
                     <div class="flex items-center space-x-2">
                         <i class="fa-solid fa-envelope text-porange-700"></i>
@@ -653,53 +667,63 @@
                 {% for skill in skills %}
 
 
-                <div
-                        class="bg-white rounded-custom p-6 overflow-hidden relative transition-all"
-                >
-                    <span class="gradient-text"> {{ skill.getTranslations.getValues[0].name }}</span>
-
                     <div
-                            class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-fpink-500 bg-opacity-10 absolute -right-5 -top-5"
+                            class="bg-white rounded-custom p-6 overflow-hidden relative transition-all"
                     >
-                        <img src="{{ asset('build/images/icons/ux.svg') }}" alt=""/>
-                    </div>
+                        <span class="gradient-text">
+                            {% if app.request.getLocale == 'en' %}
+                                {{ skill.getTranslations.getValues[0].name }}
+                            {% else %}
+                                {{ skill.getTranslations.getValues[1].name }}
+                            {% endif %}
+                        </span>
 
-                    <h3 class="text-2xl font-bold mb-3 text-interface-100">
-                        {{ skill.getTranslations.getValues[0].name }}
-                    </h3>
-                    <p class="text-lg text-interface-200 mb-3">
-                        Pellentesque non nibh sapien to a find rutrrnec into a
-                        vestibulum in aand find to mollis.
-                    </p>
-                    <a
-                            href="#"
-                            class="text-interface-100 transition-all group hover:text-porange-500 text-base underline inline-flex"
-                    >
-                        <span>Learn more</span>
-                        <svg
-                                class="stroke-interface-100 group-hover:stroke-porange-500"
-                                width="25"
-                                height="26"
-                                viewBox="0 0 25 26"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                        <div
+                                class="w-36 h-36 rounded-full inline-flex items-center justify-center bg-fpink-500 bg-opacity-10 absolute -right-5 -top-5"
                         >
-                            <path
-                                    d="M7.10156 18.0758L17.2491 7.9248"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                            />
-                            <path
-                                    d="M7.10156 7.9248H17.2491V18.0758"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                            />
-                        </svg>
-                    </a>
-                </div>
-                        {% endfor %}
+                            <img src="{{ asset('build/images/icons/ux.svg') }}" alt=""/>
+                        </div>
+
+                        <h3 class="text-2xl font-bold mb-3 text-interface-100">
+                            {% if app.request.getLocale == 'en' %}
+                                {{ skill.getTranslations.getValues[0].name }}
+                            {% else %}
+                                {{ skill.getTranslations.getValues[1].name }}
+                            {% endif %}
+                        </h3>
+                        <p class="text-lg text-interface-200 mb-3">
+                            Pellentesque non nibh sapien to a find rutrrnec into a
+                            vestibulum in aand find to mollis.
+                        </p>
+                        <a
+                                href="#"
+                                class="text-interface-100 transition-all group hover:text-porange-500 text-base underline inline-flex"
+                        >
+                            <span>Learn more</span>
+                            <svg
+                                    class="stroke-interface-100 group-hover:stroke-porange-500"
+                                    width="25"
+                                    height="26"
+                                    viewBox="0 0 25 26"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                        d="M7.10156 18.0758L17.2491 7.9248"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                />
+                                <path
+                                        d="M7.10156 7.9248H17.2491V18.0758"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                {% endfor %}
 
             </div>
         </div>
