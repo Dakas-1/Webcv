@@ -21,7 +21,6 @@ class HomepageController extends AbstractController
 
         return $this->render('index-teacher.html.twig', [
             'skills' => $skills,
-
         ]);
     }
 }
