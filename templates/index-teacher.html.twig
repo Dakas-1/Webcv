@@ -26,14 +26,14 @@
             <div class="grow">
                 <div class="flex space-x-0 md:space-x-14">
                     <!-- Locale -->
-                    {% if app.request.getLocale == 'en' %}
-                        <a href="{{ fullUrl }}"
-                           class="text-white text-base"
-                        ><p>русский</p></a>
-                    {% elseif app.request.getLocale == 'ru' %}
-                        <a href="{{ fullUrl }}"
-                           class="text-white text-base"
-                        ><p>english</p></a>
+                    {% if app.request.locale == 'en' %}
+                        <a href="{{ path('app_homepage', {'_locale': 'ru',}) }}"
+                           class="text-white text-base">
+                            <p>русский</p></a>
+                    {% elseif app.request.locale == 'ru' %}
+                        <a href="{{ path('app_homepage', {'_locale': 'en',}) }}"
+                           class="text-white text-base">
+                            <p>english</p></a>
                     {% endif %}
                     <!-- Email -->
                     <div class="flex items-center space-x-2">
@@ -671,7 +671,7 @@
                             class="bg-white rounded-custom p-6 overflow-hidden relative transition-all"
                     >
                         <span class="gradient-text">
-                            {% if app.request.getLocale == 'en' %}
+                            {% if app.request.locale == 'en' %}
                                 {{ skill.getTranslations.getValues[0].name }}
                             {% else %}
                                 {{ skill.getTranslations.getValues[1].name }}
@@ -685,7 +685,7 @@
                         </div>
 
                         <h3 class="text-2xl font-bold mb-3 text-interface-100">
-                            {% if app.request.getLocale == 'en' %}
+                            {% if app.request.locale == 'en' %}
                                 {{ skill.getTranslations.getValues[0].name }}
                             {% else %}
                                 {{ skill.getTranslations.getValues[1].name }}
