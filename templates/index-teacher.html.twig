@@ -679,9 +679,9 @@
                         <h3 class="text-2xl font-bold mb-3 text-interface-100">
                             {{ skill.translate(app.request.locale).name }}
                         </h3>
+                        {% for article in articles %}
                         <p class="text-lg text-interface-200 mb-3">
-                            Pellentesque non nibh sapien to a find rutrrnec into a
-                            vestibulum in aand find to mollis.
+                            {{ article.translate(app.request.locale).text }}
                         </p>
                         <a
                                 href="#"
@@ -710,6 +710,7 @@
                                 />
                             </svg>
                         </a>
+                        {% endfor %}
                     </div>
                 {% endfor %}
 
